@@ -3,12 +3,55 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Duck.Pages"
+    xmlns:models="using:Duck.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <SplitView OpenPaneLength="400" DisplayMode="Inline" IsPaneOpen="True">
+        <SplitView.Pane>
+            <ListView x:Name="Menu" Margin="10" Loaded="Menu_Loaded">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:MenuItem">
+                        <ListViewItem Tapped="ListViewItem_Tapped">
+                            <RelativePanel>
 
-    </Grid>
+                                <SymbolIcon x:Name="icon" Symbol="{x:Bind Icon}" Margin="20 0 0 0"/>
+                                <TextBlock RelativePanel.RightOf="icon" Text="{x:Bind Title}" Margin="30 0 0 0"  />
+                            </RelativePanel>
+
+                        </ListViewItem>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <ScrollViewer FocusVisualPrimaryBrush="White" BorderBrush="White" Background="White">
+
+                <StackPanel>
+                    <Rectangle Height="20px" Width="auto" Fill="#FFB20837"/>
+                    <Frame x:Name="MainFrame">
+                        <GridView>
+                            <RelativePanel FocusVisualPrimaryBrush="White" Background="#FFB20837" Margin="100 0 0 0" Width="157" Height="175">
+                                <Image x:Name="p1" Source="/Assets/logo.png" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="100" Width="80" FocusVisualPrimaryBrush="Red" FocusVisualSecondaryBrush="#99F6F6F6"  />
+                                <TextBlock x:Name="p2" RelativePanel.Below="p1" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="FAST FOODS" FontWeight="ExtraBlack"></TextBlock>
+                                <TextBlock RelativePanel.Below="p2" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="RESTAURANTS"></TextBlock>
+                            </RelativePanel>
+                            <Image Source="/Assets/button8.Image.png" Height="47" Width="37" />
+                            <Image Source="/Assets/button9.Image.png" Height="47" Width="37" />
+                            <Image Source="/Assets/button10.Image.png" Height="47" Width="37" />
+                            <Image Source="/Assets/button11.Image.png" Height="47" Width="37" />
+                            <Image Source="/Assets/button12.Image.png" Height="47" Width="37" />
+                            <Image Source="/Assets/button13.Image.png" Height="47" Width="37" />
+
+
+                            
+                        </GridView>
+                    </Frame>
+                </StackPanel>
+
+            </ScrollViewer>
+        </SplitView.Content>
+    </SplitView>
 </Page>
