@@ -42,13 +42,22 @@ namespace Duck.Pages
             MenuItem item = Menu.SelectedItem as MenuItem;
             switch (item.Title)
             {
-                case "home":
+                case "Home":
                     MainFrame.Navigate(typeof(Pages.Home));
                     break;
+
 
            
            
             }
         }
+
+        private void pic1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+     
+      
     }
 }

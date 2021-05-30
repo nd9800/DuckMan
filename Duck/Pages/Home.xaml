@@ -9,21 +9,36 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <SplitView OpenPaneLength="400" DisplayMode="Inline" IsPaneOpen="True">
+    <SplitView OpenPaneLength="300" DisplayMode="Inline" IsPaneOpen="True">
         <SplitView.Pane>
-            <ListView x:Name="Menu" Margin="10" Loaded="Menu_Loaded">
+            <ListView x:Name="Menu" Margin="0,90,0,0" Loaded="Menu_Loaded">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:MenuItem">
-                        <ListViewItem Tapped="ListViewItem_Tapped">
-                            <RelativePanel>
-
-                                <SymbolIcon x:Name="icon" Symbol="{x:Bind Icon}" Margin="20 0 0 0"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle x:Name="hover" Visibility="Collapsed" Width="auto" Grid.Column="0" Fill="#FFB20837"/>
+                            <ListViewItem Tapped="ListViewItem_Tapped" Grid.Column="1" >
+                            <RelativePanel >
+                                <SymbolIcon  x:Name="icon" Symbol="{x:Bind Icon}" Margin="20 0 0 0"/>
                                 <TextBlock RelativePanel.RightOf="icon" Text="{x:Bind Title}" Margin="30 0 0 0"  />
                             </RelativePanel>
-
                         </ListViewItem>
+                            </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                
             </ListView>
         </SplitView.Pane>
         <SplitView.Content>
@@ -31,23 +46,37 @@
 
                 <StackPanel>
                     <Rectangle Height="20px" Width="auto" Fill="#FFB20837"/>
-                    <Frame x:Name="MainFrame">
-                        <GridView>
-                            <RelativePanel FocusVisualPrimaryBrush="White" Background="#FFB20837" Margin="100 0 0 0" Width="157" Height="175">
+                    <Frame x:Name="MainFrame" Height="217" Width="1193">
+                        <Grid Width="1090">
+                            <RelativePanel FocusVisualPrimaryBrush="White" Background="#FFB20837" Margin="45,0,905,37">
                                 <Image x:Name="p1" Source="/Assets/logo.png" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="100" Width="80" FocusVisualPrimaryBrush="Red" FocusVisualSecondaryBrush="#99F6F6F6"  />
-                                <TextBlock x:Name="p2" RelativePanel.Below="p1" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="FAST FOODS" FontWeight="ExtraBlack"></TextBlock>
+                                <TextBlock x:Name="p2" RelativePanel.Below="p1" TextAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="FAST FOODS" FontWeight="ExtraBlack" Height="27" Width="130" FontSize="17" />
                                 <TextBlock RelativePanel.Below="p2" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="RESTAURANTS"></TextBlock>
+
                             </RelativePanel>
-                            <Image Source="/Assets/button8.Image.png" Height="47" Width="37" />
-                            <Image Source="/Assets/button9.Image.png" Height="47" Width="37" />
-                            <Image Source="/Assets/button10.Image.png" Height="47" Width="37" />
-                            <Image Source="/Assets/button11.Image.png" Height="47" Width="37" />
-                            <Image Source="/Assets/button12.Image.png" Height="47" Width="37" />
-                            <Image Source="/Assets/button13.Image.png" Height="47" Width="37" />
+                            <RelativePanel Height="169" Margin="545,3,0,3">
+                                <Button x:Name="pic1" Height="33" Width="43" RelativePanel.AlignTopWithPanel="True" Click="pic1_Click" >
+                                    <Image  Source="/Assets/button8.Image.png" Margin="-5,-6,-12,-7"    />
+                                </Button>
+                                <Button x:Name="pic2" Height="33" Width="43" RelativePanel.RightOf="pic1" >
+                                    <Image Source="/Assets/button9.Image.png" Margin="-6,-6,-22,-8"/>
+                                </Button>
+                                <Button x:Name="pic3" Height="33" Width="43" RelativePanel.RightOf="pic2" >
+                                    <Image Source="/Assets/button10.Image.png" Margin="-13,-4,-35,-6"/>
+                                </Button>
+                                <Button  x:Name="pic4"  Height="33" Width="43" RelativePanel.AlignTopWithPanel="True"  RelativePanel.AlignRightWithPanel="True" >
+                                    <Image Source="/Assets/button13.Image.png" Margin="-2,-6,0,0"/>
+                                </Button>
+                                <Button  x:Name="pic5"  RelativePanel.LeftOf="pic4" Height="33" Width="43">
+                                    <Image Source="/Assets/button12.Image.png" Margin="-2,-6,0,0" />
+                                </Button>
+                                <Button  x:Name="pic6"  RelativePanel.LeftOf="pic5" Height="33" Width="43">
+                                    <Image Source="/Assets/button11.Image.png" Margin="-12,-6,0,0"/>
+                                </Button>
+                            </RelativePanel>
 
 
-                            
-                        </GridView>
+                        </Grid>
                     </Frame>
                 </StackPanel>
 
