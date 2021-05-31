@@ -43,9 +43,11 @@ namespace Duck.Pages
             switch (item.Title)
             {
                 case "Home":
-                    MainFrame.Navigate(typeof(Pages.Home));
+                    MainFrame.Navigate(typeof(Pages.Home_page));
                     break;
-
+                case "Category":
+                    MainFrame.Navigate(typeof(Pages.Category));
+                    break;
 
            
            

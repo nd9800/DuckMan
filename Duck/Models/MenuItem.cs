@@ -17,4 +17,5 @@ namespace Duck.Models
             Title = title;
         }
     }
+
 }

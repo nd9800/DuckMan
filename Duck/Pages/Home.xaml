@@ -8,8 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <SplitView OpenPaneLength="300" DisplayMode="Inline" IsPaneOpen="True">
+    <ScrollViewer>
+        <SplitView OpenPaneLength="300" DisplayMode="Inline" IsPaneOpen="True">
         <SplitView.Pane>
             <ListView x:Name="Menu" Margin="0,90,0,0" Loaded="Menu_Loaded">
                 <ListView.ItemContainerStyle>
@@ -20,67 +20,121 @@
                         <Setter Property="Padding" Value="0"/>
                     </Style>
                 </ListView.ItemContainerStyle>
-                
+
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:MenuItem">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Rectangle x:Name="hover" Visibility="Collapsed" Width="auto" Grid.Column="0" Fill="#FFB20837"/>
-                            <ListViewItem Tapped="ListViewItem_Tapped" Grid.Column="1" >
+
+                        <ListViewItem Tapped="ListViewItem_Tapped" Grid.Column="1">
                             <RelativePanel >
                                 <SymbolIcon  x:Name="icon" Symbol="{x:Bind Icon}" Margin="20 0 0 0"/>
                                 <TextBlock RelativePanel.RightOf="icon" Text="{x:Bind Title}" Margin="30 0 0 0"  />
                             </RelativePanel>
                         </ListViewItem>
-                            </Grid>
+
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                
+
             </ListView>
         </SplitView.Pane>
         <SplitView.Content>
-            <ScrollViewer FocusVisualPrimaryBrush="White" BorderBrush="White" Background="White">
-
-                <StackPanel>
-                    <Rectangle Height="20px" Width="auto" Fill="#FFB20837"/>
-                    <Frame x:Name="MainFrame" Height="217" Width="1193">
-                        <Grid Width="1090">
-                            <RelativePanel FocusVisualPrimaryBrush="White" Background="#FFB20837" Margin="45,0,905,37">
-                                <Image x:Name="p1" Source="/Assets/logo.png" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="100" Width="80" FocusVisualPrimaryBrush="Red" FocusVisualSecondaryBrush="#99F6F6F6"  />
-                                <TextBlock x:Name="p2" RelativePanel.Below="p1" TextAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="FAST FOODS" FontWeight="ExtraBlack" Height="27" Width="130" FontSize="17" />
-                                <TextBlock RelativePanel.Below="p2" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="RESTAURANTS"></TextBlock>
-
-                            </RelativePanel>
-                            <RelativePanel Height="169" Margin="545,3,0,3">
-                                <Button x:Name="pic1" Height="33" Width="43" RelativePanel.AlignTopWithPanel="True" Click="pic1_Click" >
-                                    <Image  Source="/Assets/button8.Image.png" Margin="-5,-6,-12,-7"    />
-                                </Button>
-                                <Button x:Name="pic2" Height="33" Width="43" RelativePanel.RightOf="pic1" >
-                                    <Image Source="/Assets/button9.Image.png" Margin="-6,-6,-22,-8"/>
-                                </Button>
-                                <Button x:Name="pic3" Height="33" Width="43" RelativePanel.RightOf="pic2" >
-                                    <Image Source="/Assets/button10.Image.png" Margin="-13,-4,-35,-6"/>
-                                </Button>
-                                <Button  x:Name="pic4"  Height="33" Width="43" RelativePanel.AlignTopWithPanel="True"  RelativePanel.AlignRightWithPanel="True" >
-                                    <Image Source="/Assets/button13.Image.png" Margin="-2,-6,0,0"/>
-                                </Button>
-                                <Button  x:Name="pic5"  RelativePanel.LeftOf="pic4" Height="33" Width="43">
-                                    <Image Source="/Assets/button12.Image.png" Margin="-2,-6,0,0" />
-                                </Button>
-                                <Button  x:Name="pic6"  RelativePanel.LeftOf="pic5" Height="33" Width="43">
-                                    <Image Source="/Assets/button11.Image.png" Margin="-12,-6,0,0"/>
-                                </Button>
-                            </RelativePanel>
 
 
-                        </Grid>
-                    </Frame>
-                </StackPanel>
+            <StackPanel Background="White" Margin="10,0,0,0">
 
-            </ScrollViewer>
+
+                <Grid Height="251">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                 
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="0" Background="#FFB20837" ></Border>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="1" Background="#FFB20837">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0">
+                                    <Image Source="/Assets/logo.png"/>
+                                </Border>
+                                <Border Grid.Row="1" Padding="0 10 0 0">
+                                    <TextBlock TextAlignment="Center" Text="FAST FOODS" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                                </Border>
+                                <Border Grid.Row="2" Padding="0 5 0 0">
+                                    <TextBlock TextAlignment="Center" Text="RESTAURANT" FontSize="19" Foreground="White"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4">
+                            <Grid VerticalAlignment="Top">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0">
+                                    <Image Source="/Assets/button8.Image.png" />
+
+                                </Button>
+                                <Button Grid.Column="1">
+                                    <Image Source="/Assets/button9.Image.png" />
+
+                                </Button>
+                                <Button Grid.Column="2">
+                                    <Image Source="/Assets/button10.Image.png" />
+
+                                </Button>
+                            </Grid>
+                            
+                        </Border>
+
+                        <Border Grid.Column="6">
+                            <Grid VerticalAlignment="Top">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0">
+                                    <Image Source="/Assets/button11.Image.png" />
+
+                                </Button>
+                                <Button Grid.Column="1">
+                                    <Image Source="/Assets/button12.Image.png" />
+
+                                </Button>
+                                <Button Grid.Column="2">
+                                    <Image Source="/Assets/button13.Image.png" />
+
+                                </Button>
+                            </Grid>
+
+                        </Border>
+
+                    </Grid>
+                </Grid>
+                
+                    <Frame x:Name="MainFrame" Width="auto">
+
+                </Frame>
+               
+            </StackPanel>
+
         </SplitView.Content>
     </SplitView>
+    </ScrollViewer>
 </Page>
