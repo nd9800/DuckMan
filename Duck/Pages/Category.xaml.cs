@@ -52,12 +52,25 @@ namespace Duck.Pages
 
               */
             MenuService mn = new MenuService();
-            Data g = await mn.GetMenu();
+            Root g = await mn.GetMenu();
+            
             if (g != null)
             {
-                ItemList.Items.Add(g.foods);
+                CList.ItemsSource = g.data.foods;
+          
+
             }
         }
-       
+
+    
+        private void CList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            ListView view = (ListView)sender;
+
+            var selectedItem = view.SelectedItem;
+           
+            SubFrame.Navigate(typeof(Pages.Detail),selectedItem);
+        }
     }
 }

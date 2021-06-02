@@ -128,9 +128,9 @@
                     </Grid>
                 </Grid>
                 
-                    <Frame x:Name="MainFrame" Width="auto">
+                    <Frame x:Name="MainFrame" Width="auto" Margin="10 20 10 0"/>
 
-                </Frame>
+                
                
             </StackPanel>
 

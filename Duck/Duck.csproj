@@ -124,9 +124,14 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryList.cs" />
+    <Compile Include="Models\DetailList.cs" />
+    <Compile Include="Models\HomeList.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Pages\Category.xaml.cs">
       <DependentUpon>Category.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Detail.xaml.cs">
+      <DependentUpon>Detail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -173,6 +178,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Category.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Detail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

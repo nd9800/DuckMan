@@ -29,6 +29,6 @@ namespace Duck.Adapters
         {
             get => String.Format(baseURL + "/api/category/1");
         }
-
+   
     }
 }

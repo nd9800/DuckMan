@@ -25,33 +25,56 @@ namespace Duck.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Home_page : Page
+    public sealed partial class Detail : Page
     {
-        public Home_page()
+        int id;
+        public Detail()
         {
             this.InitializeComponent();
-            GetHome();
+            
+            
+     
         }
-        public async void GetHome()
+     
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var item = e.Parameter as Food;
+            switch (item)
+            {
+                case null:
+                    var item2 = e.Parameter as HomeList;
+                    id = item2.id;
+                    base.OnNavigatedTo(e);
+                    GetFood();
+                    break;
+                default:
+                    id = item.id;
+                    base.OnNavigatedTo(e);
+                    GetFood();
+                    break;
+
+            }
+
+          
+
+        }
+        public async void GetFood()
+        {
+
             HttpClient httpClient = new HttpClient();//shipper
-            var response = await (httpClient.GetAsync("https://foodgroup.herokuapp.com/api/today-special"));
+            var response = await (httpClient.GetAsync("https://foodgroup.herokuapp.com/api/food/" + id));
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var stringcontent = await response.Content.ReadAsStringAsync(); //da lay duoc het api qua dang string //read response content
                                                                                 // convert string content sang object
-                RootHome g = JsonConvert.DeserializeObject<RootHome>(stringcontent);
-                HList.ItemsSource = g.data;
+
+                Root2 g2 = JsonConvert.DeserializeObject<Root2>(stringcontent);
+
+                detailList.Items.Add(g2.data);
             }
+
+
         }
 
-        private void HList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListView view = (ListView)sender;
-
-            var selectedItem = view.SelectedItem;
-
-            HomeFrame.Navigate(typeof(Pages.Detail), selectedItem);
-        }
     }
 }
