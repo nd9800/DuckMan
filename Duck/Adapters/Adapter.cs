@@ -29,6 +29,10 @@ namespace Duck.Adapters
         {
             get => String.Format(baseURL + "/api/category/1");
         }
+        public string GetCreateOrderAPI
+        {
+            get => String.Format(baseURL + "api/create-order");
+        }
    
     }
 }

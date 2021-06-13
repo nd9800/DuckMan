@@ -33,8 +33,10 @@ namespace Duck.Pages
 
             MenuItem m = new MenuItem("57615", "Home");
             MenuItem m1 = new MenuItem("57721", "Category");
-          
-            Menu.Items.Add(m); Menu.Items.Add(m1);
+            MenuItem m2 = new MenuItem("57677", "Cart");
+
+
+            Menu.Items.Add(m); Menu.Items.Add(m1); Menu.Items.Add(m2);
         }
 
         private void ListViewItem_Tapped(object sender, TappedRoutedEventArgs e)
@@ -48,9 +50,11 @@ namespace Duck.Pages
                 case "Category":
                     MainFrame.Navigate(typeof(Pages.Category));
                     break;
+                case "Cart":
+                    MainFrame.Navigate(typeof(Pages.CartView));
+                    break;
 
-           
-           
+
             }
         }
 

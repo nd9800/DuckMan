@@ -17,11 +17,15 @@ using Windows.UI.Xaml.Navigation;
 using Duck.Models;
 using Newtonsoft.Json;
 using Duck.Services;
+using Duck.Models;
+using Windows.UI.Popups;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Duck.Pages
 {
+    
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -31,8 +35,7 @@ namespace Duck.Pages
         public Detail()
         {
             this.InitializeComponent();
-            
-            
+    
      
         }
      
@@ -58,6 +61,7 @@ namespace Duck.Pages
           
 
         }
+
         public async void GetFood()
         {
 
@@ -76,5 +80,20 @@ namespace Duck.Pages
 
         }
 
+        private async void Button_ClickCart(object sender, RoutedEventArgs e)
+        {
+            Cart cart = new Cart();
+            var item = (DetailList)detailList.Items[0];
+            
+         
+
+                    CartItem c = new CartItem(item.id, item.name, item.image, item.price, 1);
+
+                    cart.AddToCart(c);
+                   
+
+            var dialog = new MessageDialog("Done");
+            await dialog.ShowAsync();
+        }
     }
 }

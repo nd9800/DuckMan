@@ -1,0 +1,42 @@
+﻿<Page 
+    x:Class="Duck.Pages.CartView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="using:Duck.Models"
+    xmlns:local="using:Duck.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="White">
+    
+    <Frame x:Name="CartFrame">
+     
+        <ListView HorizontalAlignment="Center"  x:Name="CartList">
+            <ListView.ItemTemplate >
+                <DataTemplate x:DataType="models:CartItem">
+                
+                        <StackPanel Orientation="Horizontal">
+
+                        <TextBlock Text="{x:Bind name}" Foreground="Black" TextWrapping="Wrap" Width="200" Margin="10"/>
+
+                        <Image  Source="{x:Bind image}" Width="50"/>
+
+
+                            <TextBlock Text="{x:Bind price}" Foreground="Black" Margin="10"/>
+
+
+                        <TextBlock  Text="{x:Bind qty}" Foreground="Black" Margin="10"/>
+                        <Button CommandParameter="{x:Bind id}" Content="Delete" Click="Delete_Item" Background="#FFB20837" BorderBrush="Black"/>
+                        <Button CommandParameter="{x:Bind id}" Content="Update" Click="Update_Item" Background="#FFB20837" BorderBrush="Black"/>
+                        
+                    </StackPanel>
+                
+                </DataTemplate>
+                
+            </ListView.ItemTemplate>
+            
+        </ListView>
+         
+     
+    </Frame>
+</Page>
