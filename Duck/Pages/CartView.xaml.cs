@@ -32,13 +32,14 @@ namespace Duck.Pages
             this.InitializeComponent();
             
             CartList.ItemsSource = cart.GetCart();
-        
-
+            Update_ToTal();
+           
         }
 
         private async void Delete_Item(object sender, RoutedEventArgs e)
         {
            
+  
             Button b = (sender) as Button;
             var cid = Convert.ToInt32(b.CommandParameter);
             for (int i = 0; i < cart.GetCart().Count; i++)
@@ -54,9 +55,9 @@ namespace Duck.Pages
             await dialog.ShowAsync();
         }
 
-        private async void Update_Item(object sender, RoutedEventArgs e)
+        private void Plus_Item(object sender, RoutedEventArgs e)
         {
-          
+             
       
             Button b = (sender) as Button;
             var cid = Convert.ToInt32(b.CommandParameter);
@@ -64,14 +65,55 @@ namespace Duck.Pages
             {
                 if (cart.GetCart()[i].id == cid)
                 {
-                    cart.UpdateCart(cart.GetCart()[i],6);
+                    int newQty = cart.GetCart()[i].qty + 1;
+                    cart.UpdateCart(cart.GetCart()[i],newQty);
                     break;
                 }
             }
+   
+            CartFrame.Navigate(typeof(CartView));
+ 
+        }
+        private void Minus_Item(object sender, RoutedEventArgs e)
+        {
+
+
+            Button b = (sender) as Button;
+            var cid = Convert.ToInt32(b.CommandParameter);
+            for (int i = 0; i < cart.GetCart().Count; i++)
+            {
+                if (cart.GetCart()[i].id == cid)
+                {
+                    if (cart.GetCart()[i].qty > 1)
+                    {
+                        int newQty = cart.GetCart()[i].qty - 1;
+                        cart.UpdateCart(cart.GetCart()[i], newQty);
+                        break;
+                    }
+                    else break;
+                }
+            }
+    
+            CartFrame.Navigate(typeof(CartView));
+    
+        }
+
+        private async void Clear_All(object sender, RoutedEventArgs e)
+        {
+            cart.ClearCart();
             var dialog = new MessageDialog("Done");
             CartFrame.Navigate(typeof(CartView));
             await dialog.ShowAsync();
         }
+        public void Update_ToTal()
+        {
+            int sum = 0;
+            for (int i = 0; i < cart.GetCart().Count; i++)
+            {
+                sum += cart.GetCart()[i].price * cart.GetCart()[i].qty;
+            }
+            Total.Text ="Total price is "+ Convert.ToString(sum);
+            }
 
    
     }

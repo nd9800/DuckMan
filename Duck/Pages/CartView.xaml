@@ -8,35 +8,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="White">
-    
+
     <Frame x:Name="CartFrame">
-     
-        <ListView HorizontalAlignment="Center"  x:Name="CartList">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Your Cart" Foreground="Black" Margin="20" FontSize="30" FontWeight="ExtraBlack"/>
+            <ListView Grid.Row="1" HorizontalAlignment="Center"  x:Name="CartList">
             <ListView.ItemTemplate >
                 <DataTemplate x:DataType="models:CartItem">
-                
                         <StackPanel Orientation="Horizontal">
-
-                        <TextBlock Text="{x:Bind name}" Foreground="Black" TextWrapping="Wrap" Width="200" Margin="10"/>
-
-                        <Image  Source="{x:Bind image}" Width="50"/>
-
-
-                            <TextBlock Text="{x:Bind price}" Foreground="Black" Margin="10"/>
-
-
-                        <TextBlock  Text="{x:Bind qty}" Foreground="Black" Margin="10"/>
-                        <Button CommandParameter="{x:Bind id}" Content="Delete" Click="Delete_Item" Background="#FFB20837" BorderBrush="Black"/>
-                        <Button CommandParameter="{x:Bind id}" Content="Update" Click="Update_Item" Background="#FFB20837" BorderBrush="Black"/>
-                        
-                    </StackPanel>
-                
+                            <TextBlock FontSize="20" Text="{x:Bind name}" Foreground="Black" TextWrapping="Wrap" Width="200" Margin="10" VerticalAlignment="Center"/>
+                            <Image  Source="{x:Bind image}" Width="50"/>
+                            <TextBlock Text="{x:Bind price}" Foreground="Black" Margin="10" FontSize="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind qty}" Foreground="Black" Margin="10" FontSize="20" VerticalAlignment="Center"/>            
+                        <Button CommandParameter="{x:Bind id}" Content="+" Click="Plus_Item" Background="#FFB20837" Margin="10" />
+                        <Button CommandParameter="{x:Bind id}" Content="-" Click="Minus_Item" Background="#FFB20837" />
+                            <Button CommandParameter="{x:Bind id}" Content="Delete" Click="Delete_Item" Background="#FFB20837" Margin="10" />
+                        </StackPanel>
                 </DataTemplate>
-                
             </ListView.ItemTemplate>
-            
         </ListView>
-         
-     
+            <StackPanel Grid.Row="2" Margin="20">
+                <TextBlock x:Name="Total" Foreground="Black" HorizontalAlignment="Center" FontWeight="Black" FontSize="30"/>
+                <Button  Click="Clear_All" HorizontalAlignment="Center" Content="Clear All" Background="#FFB20837" Margin="5" />
+                <Button  HorizontalAlignment="Center" Content="Proceed" Background="#FFB20837"  />
+            </StackPanel>
+        </Grid>
     </Frame>
 </Page>
